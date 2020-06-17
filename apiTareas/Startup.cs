@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Models.SetUps;
+using Microsoft.OpenApi.Models;
 
 namespace apiTareas
 {
@@ -27,11 +27,20 @@ namespace apiTareas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           services.Configure<Settings>(Configuration.GetSection("AppSettings"));
+            services.Configure<Settings>(Configuration.GetSection("AppSettings"));
 
-           var settings = Configuration.GetSection("AppSettings").Get<Settings>();
+            var settings = Configuration.GetSection("AppSettings").Get<Settings>();
+
+            services.AddCors();
 
             services.AddControllers();
+
+            services.AddHealthChecks(); // Add health check services
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API TAREAS", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,10 +55,23 @@ namespace apiTareas
 
             app.UseRouting();
 
+            app.UseCors(
+             options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
+
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "apiTareas");
+            });
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/health");
+
                 endpoints.MapControllers();
             });
         }

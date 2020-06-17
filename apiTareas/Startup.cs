@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Models.SetUps;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Models.SetUps;
 
 namespace apiTareas
 {
@@ -25,6 +27,10 @@ namespace apiTareas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           services.Configure<Settings>(Configuration.GetSection("AppSettings"));
+
+           var settings = Configuration.GetSection("AppSettings").Get<Settings>();
+
             services.AddControllers();
         }
 

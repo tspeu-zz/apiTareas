@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWeb", "apiTareas\ApiWeb.csproj", "{5B602CBD-A151-44A9-83F0-7262CCCC0CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Web", "apiTareas\Api.Web.csproj", "{5B602CBD-A151-44A9-83F0-7262CCCC0CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{9E491D14-8C7B-40EF-8435-C47ADA5CCCC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Models", "Models\Api.Models.csproj", "{9E491D14-8C7B-40EF-8435-C47ADA5CCCC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{2C31B362-DD2C-48A5-9551-445F51AB3D43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Business", "Business\Api.Business.csproj", "{2C31B362-DD2C-48A5-9551-445F51AB3D43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{9B4F7C5A-AD5B-488C-B975-EBDC46396678}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Data", "Data\Api.Data.csproj", "{9B4F7C5A-AD5B-488C-B975-EBDC46396678}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
